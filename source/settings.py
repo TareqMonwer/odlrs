@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
@@ -45,7 +46,7 @@ INSTALLED_APPS = [
     'diagnostic_centers',
     'tests',
     'report_processing',
-    'whitenoise.runserver_nostatic',
+
 
     # allauth
     'allauth',
