@@ -1,0 +1,102 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Categories-Staff | ODLRS</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/fakeLoader.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+
+</head>
+
+<body class="common-b ">
+
+    <!-- loader -->
+    <div class="fakeLoader"></div>
+    <!-- loader -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand text-warning" href="#"><b>ODLRS</b></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <p class="text-white">{{ staff.username }}</p>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white"
+                            href="{% url 'diagnostic_centers:staff-dashboard' staff.username %}">
+                            <button type="submit" class="btn btn-white btn-sm">Back to DASHBOARD</button>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container inner-content mt-4">
+        <div class="row">
+
+            {% for category in categories_staff %}
+            <div class="col-3">
+                <div class="card mb-4">
+                    {#                    <img src="{{ test.image.url }}" class="card-img-top" alt="..." width="100%">#}
+
+                    <div class="card-body">
+                        {#                        <li>{{ admin.username }}</li>#}
+
+                        <h5 class="card-title">{{ category.category_name }}
+                            {#                            <a href="{% url 'tests:test-details' test.id %}">{{ test.test_name }}</a>#}
+                        </h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ category.center.name }}</h6>
+                        {#                        <p class="card-text center">{{ test.center }}</p>#}
+                        {#                        <p class="card-text">Discount: {{ test.discount }}</p>#}
+                        {#                        <p class="card-text text-danger">Price: {{ test.price }} TK</p>#}
+                        {#                        <p class="card-text">{{ test.active_status }}</p>#}
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+            <br><br>
+
+        </div>
+    </div>
+
+
+
+    <div class="footer bg-dark text-white text-center py-2">
+        <div class="d-box px-2">
+            <a class="text-white" href="{% url 'developers' %}" target="_blank"
+               data-toggle="tooltip" data-placement="top" title="About Developers">About Developers</a>
+        </div>
+    </div>
+
+    <script src="{% static 'js/fakeLoader.min.js' %}"></script>
+    <script>
+        $.fakeLoader();
+    </script>
+
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>
